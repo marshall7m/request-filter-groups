@@ -27,6 +27,8 @@ env:
 
 jobs:
   precommit:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     container: python:3.9-slim-buster
     steps:
