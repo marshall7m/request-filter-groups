@@ -30,14 +30,14 @@ jobs:
     permissions:
       contents: read
     runs-on: ubuntu-latest
-    container: python:3.9-slim-buster
+    container: bitnami/git:2.35.1
     steps:
       - uses: actions/checkout@v3
       - name: Hooks
         shell: bash
         run: |
           apt-get -y update
-          apt-get -y install --no-install-recommends git
+          apt-get -y install --no-install-recommends python3-pip
           python3 -m pip install pre-commit
 
           pre-commit install
@@ -54,8 +54,5 @@ jobs:
         id: pytest
         shell: bash
         run: |
-          apt-get -y update
-          apt-get -y install --no-install-recommends git
-
           python3 -m pip install ".[tests]"
           pytest -vv tests
