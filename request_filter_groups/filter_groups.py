@@ -14,7 +14,6 @@ class ValidationError(Exception):
 
 
 class RequestFilter(object):
-
     def validate(self, data: dict, filter_groups: List[dict]) -> bool:
         """
         Returns True if atleast one filter group is validated or raises a
@@ -22,7 +21,7 @@ class RequestFilter(object):
 
         Arguments:
             data: Dictionary of request
-            filter_groups: List of filter groups containig JSON path keys to 
+            filter_groups: List of filter groups containig JSON path keys to
                 parse `data` with and Validator rules to validate with.
                 JSON path syntax: https://goessner.net/articles/JsonPath/
                 Validator rules syntax: https://github.com/CSenshi/Validator/blob/master/RULES.md
@@ -54,7 +53,7 @@ class RequestFilter(object):
         Decorator function that returns the passed function with original arguments
         if validation is successful or returns a validation error response.
 
-        filter_groups: List of filter groups containig JSON path keys to 
+        filter_groups: List of filter groups containig JSON path keys to
             parse `data` with and Validator rules to validate with.
             JSON path syntax: https://goessner.net/articles/JsonPath/
             Validator rules syntax: https://github.com/CSenshi/Validator/blob/master/RULES.md

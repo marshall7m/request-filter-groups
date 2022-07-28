@@ -46,6 +46,7 @@ def test_decorator(data, filter_groups, expected):
     Assert decorator returns the dummy function's return status code if validated
     or the validation error status code if not validated
     """
+
     @r.request_filter_groups(filter_groups)
     def func(data):
         return {"statusCode": 200}
