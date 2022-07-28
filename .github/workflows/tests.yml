@@ -28,14 +28,14 @@ env:
 jobs:
   precommit:
     runs-on: ubuntu-latest
-    container: bitnami/git:2.35.1
+    container: python:3.9-slim-buster
     steps:
       - uses: actions/checkout@v3
       - name: Hooks
         shell: bash
         run: |
           apt-get -y update
-          apt-get -y install --no-install-recommends python3-pip
+          apt-get -y install --no-install-recommends git
           python3 -m pip install pre-commit
 
           pre-commit install
@@ -52,5 +52,8 @@ jobs:
         id: pytest
         shell: bash
         run: |
-          python3 -m pip install .
+          apt-get -y update
+          apt-get -y install --no-install-recommends git
+
+          python3 -m pip install ".[tests]"
           pytest -vv tests
