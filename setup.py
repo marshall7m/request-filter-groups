@@ -12,7 +12,7 @@ setup(
     license="Apache 2.0",
     packages=["request_filter_groups"],
     install_requires=["flask", "validator==0.7.1", "jsonpath-ng==1.5.3"],
-    tests_require=["pytest"],
+    extras_require={"tests": ["pytest"]},
     classifiers=[
         "Framework :: Flask",
         "Intended Audience :: Developers",
