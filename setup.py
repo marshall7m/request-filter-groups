@@ -3,7 +3,7 @@ from pathlib import Path
 
 setup(
     name="request-filter-groups",
-    version="0.0.1",
+    version="0.0.2",
     description="Uses filter groups to validate requests",
     long_description=(Path(__file__).parent / "README.md").read_text(),
     long_description_content_type="text/markdown",
