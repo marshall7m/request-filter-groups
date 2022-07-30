@@ -14,7 +14,8 @@ class ValidationError(Exception):
 
 
 class RequestFilter(object):
-    def validate(self, data: dict, filter_groups: List[dict]) -> bool:
+    @classmethod
+    def validate(cls, data: dict, filter_groups: List[dict]) -> bool:
         """
         Returns True if atleast one filter group is validated or raises a
         validation exception if none of the filter groups are validated.
@@ -33,7 +34,7 @@ class RequestFilter(object):
                 try:
                     results[path] = [match.value for match in parse(path).find(data)][0]
                 except IndexError:
-                    request[path] = ""
+                    results[path] = ""
             log.debug(f"Request mapping:\n{results}")
 
             val = Validator(results, group)
